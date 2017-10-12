@@ -4,11 +4,11 @@ class MySyntaxAnalyzer extends SyntaxAnalyzer {
 
   override def gittex(): Unit = {
     if(Compiler.currentToken.equalsIgnoreCase(CONSTANTS.DOCB)){
-      //add to parse tree
-     // Compiler.Scanner.getNextToken();
+      //add to parse tree / stack
+      Compiler.Scanner.getNextToken();
     }
     else{
-      println("Error")
+      println("SYNTAX ERROR : Gittex file does not start with proper keyword")
       System.exit(1)
     }
   }

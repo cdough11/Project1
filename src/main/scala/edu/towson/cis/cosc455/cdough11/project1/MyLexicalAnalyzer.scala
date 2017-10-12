@@ -6,7 +6,9 @@ class MyLexicalAnalyzer extends LexicalAnalyzer{
 
   override def getChar(): Char = ???
 
-  override def getNextToken(): Unit = ???
+  override def getNextToken(): Unit = {
+    val c = getChar()
+  }
 
   override def lookup(): Boolean = ???
 }
