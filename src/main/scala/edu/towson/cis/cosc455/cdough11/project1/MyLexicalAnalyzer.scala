@@ -11,4 +11,8 @@ class MyLexicalAnalyzer extends LexicalAnalyzer{
   }
 
   override def lookup(): Boolean = ???
+
+  def initializeLexems() : Unit = ???
+
+  def hasNextToken(): Boolean = ???
 }

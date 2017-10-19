@@ -15,7 +15,7 @@ object Compiler {
     checkFile(args)
     readFile(args(0))
 
-    //Scanner.initializeLexems()
+    Scanner.initializeLexems()
     Scanner.getNextToken()
     Parser.gittex()
   }
