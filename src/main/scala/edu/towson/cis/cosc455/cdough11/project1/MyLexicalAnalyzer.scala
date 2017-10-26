@@ -38,10 +38,10 @@ class MyLexicalAnalyzer extends LexicalAnalyzer {
   }
 
   def nextToken(): Unit = {
-    if (text()) {
+    if (isText()) {
       addText()
     }
-    else if (special()) {
+    else if (isSpecial()) {
       addChar()
       specialToken(nextChar)
     }
@@ -94,8 +94,8 @@ class MyLexicalAnalyzer extends LexicalAnalyzer {
     else{
 
       while(nextChar != newline && nextChar != bracketB){
-        if(letters()) addChar()
-        else if(space()) {}
+        if(isLetter()) addChar()
+        else if(isSpace()) {}
         else lexicalError(nextChar.toString)
         nextChar = getChar()
       }
@@ -189,7 +189,7 @@ class MyLexicalAnalyzer extends LexicalAnalyzer {
   }
 
   def delete(): Unit ={
-    while(space()){
+    while(isSpace()){
       nextChar = getChar()
     }
   }
@@ -199,22 +199,22 @@ class MyLexicalAnalyzer extends LexicalAnalyzer {
   }
 
   def addInnerText(): Unit ={
-    if(text() || CONSTANTS.EQUALS.equals("=")){
+    if(isText() || CONSTANTS.EQUALS.equals("=")){
       addText()
     }
   }
 
-  def text(): Boolean = {
+  def isText(): Boolean = {
     CONSTANTS.VALIDTEXT.exists(x => x.equalsIgnoreCase(nextChar+""))
   }
 
-  def letters(): Boolean = {
+  def isLetter(): Boolean = {
     CONSTANTS.LETTERS.exists(x => x.equalsIgnoreCase(nextChar+""))
   }
-  def special(): Boolean = {
+  def isSpecial(): Boolean = {
     CONSTANTS.SPECIALCHARS.exists(x => x.equals(nextChar+""))
   }
-  def space(): Boolean = {
+  def isSpace(): Boolean = {
     CONSTANTS.BLANKSPACE.exists(x => x.equals(nextChar+""))
   }
   override def lookup(): Boolean = {
