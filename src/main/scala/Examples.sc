@@ -53,9 +53,53 @@ def removeThird(name : List[Any]) : List[Any] = {
 removeThird(name)
 
 /////////////////////////////////////////////////////
-
+//anonymous function with filter
 val nums = List(32, 50, 19, 78)
 def moreThan42(nums : List[Int]) : List[Int] = {
   nums.filter(_ > 42)
 }
 moreThan42(nums)
+
+////////////////////////////////////////////////////////
+type inches = Int
+type centimeters = Int
+
+var var1 : inches = 10
+var var2 : centimeters = var1
+
+//////////////////////////////////////////////////////////
+//anonymous function
+val testList = List(1, 3, 5, 7)
+def triplePlusOne(list : List[Int]) : List[Int] = {
+  list.map(x => (x * 3) + 1)
+}
+triplePlusOne(testList)
+
+////////////////////////////////////////////////////////
+//foldLeft
+def sum(list: List[Int]) : Int = {
+  list.filter(_ > 4)
+    .map(x => (3*x)+1)
+    .foldLeft(0)(_+_)
+}
+sum(testList)
+
+///////////////////////////////////////////////////////
+def bor(aList : List[Boolean]) : Boolean = {
+  aList.foldLeft(false)(_ || _)
+}
+def band(aList : List[Boolean]) : Boolean ={
+  aList.foldLeft(true)(_ && _)
+}
+def evens(aList : List[Int]) : List[Int] = {
+  aList.filter(_ % 2 == 0)
+}
+evens(testList)
+val boolList = List(true, true, false, true)
+def convert(aList : List[Boolean]) : List[Int] = {
+  aList.map{
+    case false => 0
+    case true => 1
+  }
+}
+convert(boolList)
