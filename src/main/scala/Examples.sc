@@ -69,7 +69,7 @@ var var2 : centimeters = var1
 
 //////////////////////////////////////////////////////////
 //anonymous function
-val testList = List(1, 3, 5, 7)
+var testList = List(1, 3, 5, 7)
 def triplePlusOne(list : List[Int]) : List[Int] = {
   list.map(x => (x * 3) + 1)
 }
@@ -103,3 +103,53 @@ def convert(aList : List[Boolean]) : List[Int] = {
   }
 }
 convert(boolList)
+
+////////////////////////////////////////////////////////
+//method twins returns a list with a match for each entry
+val testList2 = List(1, 2, 3)
+def twins(list : List[Any]) : List[Any] = {
+  list match{
+    case Nil => Nil
+    case listHead :: listTail => listHead :: listHead :: twins(listTail)
+  }
+}
+twins(testList2)
+
+////////////////////////////////////////////////////////
+val testList3 = List(true, true, false, true)
+def convertBoolToInt(list : List[Boolean]) : List[Int] = {
+  list.map{
+    case false => 0
+    case true => 1
+  }
+}
+convertBoolToInt(testList3)
+
+///////////////////////////////////////////////////////////
+val testList4 = List(1, 3, 5)
+def il2rl(list : List[Int]) : List[Double] = {
+  list.map(x => x*1.0)
+}
+il2rl(testList4)
+
+///////////////////////////////////////////////////////////
+//reuse testList4
+def square(list : List[Int]) : List[Int] = {
+  list.map(x => x*x)
+}
+square(testList4)
+
+///////////////////////////////////////////////////////////
+val testList5 = List(1, 2, 3, 4)
+def sqSum(list : List[Int]) : Int = {
+  list.map(x => x*x).foldRight(0)(_ + _)
+}
+sqSum(testList5)
+
+////////////////////////////////////////////////////////////
+val testList6 = List(true, false, true, false)
+def trueCount(list : List[Boolean]) : Int = {
+  list.filter(_ == true)
+    .foldRight(0)((_, x) => x + 1)
+}
+trueCount(testList6)

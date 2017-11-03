@@ -5,8 +5,8 @@ import scala.collection.mutable.Stack
 
 class MySyntaxAnalyzer extends SyntaxAnalyzer {
 
-  var parseTree = Stack[String]();
-  var scanner = Compiler.Scanner;
+  var parseTree = Stack[String]()
+  var scanner = Compiler.Scanner
 
   override def gittex(): Unit = {
     if(Compiler.currentToken.equalsIgnoreCase(CONSTANTS.DOCB)){
@@ -200,7 +200,7 @@ class MySyntaxAnalyzer extends SyntaxAnalyzer {
   }
 
   def innerItem(): Unit = {
-    if(Compiler.currentToken.equalsIgnoreCase(CONSTANTS.USEB)){
+    if(Compiler.currentToken.equalsIgnoreCase(CONSTANTS.VARUSEB)){
       variableUse()
       innerItem()
     }
@@ -232,7 +232,7 @@ class MySyntaxAnalyzer extends SyntaxAnalyzer {
   }
 
   def innerText(): Unit = {
-    if(Compiler.currentToken.equalsIgnoreCase(CONSTANTS.USEB)){
+    if(Compiler.currentToken.equalsIgnoreCase(CONSTANTS.VARUSEB)){
       variableUse()
       innerText()
     }

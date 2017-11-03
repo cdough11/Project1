@@ -1,11 +1,10 @@
 package edu.towson.cis.cosc455.cdough11.project1
 
-import scala.io.Source
-
 object Compiler {
 
   var currentToken : String = ""
   var fileContents : String = ""
+  var fileName : String = ""
 
   val Scanner = new MyLexicalAnalyzer
   val Parser = new MySyntaxAnalyzer
@@ -18,6 +17,7 @@ object Compiler {
     Scanner.initializeLexems()
     Scanner.getNextToken()
     Parser.gittex()
+    Converter.convertToHTML()
   }
 
   def checkFile(args: Array[String]) = {
@@ -33,5 +33,9 @@ object Compiler {
   def readFile(file: String): Unit ={
     val source = scala.io.Source.fromFile(file)
     fileContents = try source mkString finally source.close()
+  }
+
+  def fileName(file : String) : String = {
+    file.split('.').init ++ Seq("html") mkString "."
   }
 }
